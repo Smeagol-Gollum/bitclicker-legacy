@@ -3943,18 +3943,17 @@ this.do_run = function() {
     }
     
     function display_cheat() {
-        if (pd.stats.cheated_widgets > 0) {
+        if (pd.stats.cheated_widgets > 0) { // cheated BTC
             document.getElementById("cheatBTCsmall").innerHTML = "<span id="cheated_bitcoins">0</span> cheated bitcoins";
         }
-	else {
-             document.getElementById("cheatBTCsmall").innerHTML = "Cool";
+	else if (pd.stats.cheated_widgets <= 0)  { // no cheated BTC
+             document.getElementById("cheatBTCsmall").innerHTML = "";
         }
-        
-        if (pd.stats.cheated_cash > 0) {
+        else if (pd.stats.cheated_cash > 0) { // cheated cash
        	    document.getElementById("cheatUSDsmall").innerHTML = "$<span id="cheated_cash">0</span> cheated cash";
         }
-	else {
-            document.getElementById("cheatUSDsmall").innerHTML = "Cool";
+	else if (pd.stats.cheated_cash <= 0) { // no cheated cash
+            document.getElementById("cheatUSDsmall").innerHTML = "";
         }
     }
 
