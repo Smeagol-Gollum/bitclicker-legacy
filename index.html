@@ -3949,6 +3949,13 @@ this.do_run = function() {
 	else {
              document.getElementById("cheatBTCsmall").innerHTML = "Cool";
         }
+        
+        if (pd.stats.cheated_cash > 0) {
+       	    document.getElementById("cheatUSDsmall").innerHTML = "$<span id="cheated_cash">0</span> cheated cash";
+        }
+	else {
+            document.getElementById("cheatUSDsmall").innerHTML = "Cool";
+        }
     }
 
     function fix_make_sell() { 
@@ -3957,6 +3964,7 @@ this.do_run = function() {
         $('#sell_amt').html(pretty_int(pd.cash.amount));
         $('#sell_roi').html(pd.widget_roi.toFixed(2));
         $('#safe_cash').html(pretty_int(get_safe_cash()));
+        display_cheat(); // check if there are cheated things
         $('#cheated_cash').html(pretty_int(pd.stats.cheated_cash));
         $('#cheated_bitcoins').html(pretty_int(pd.stats.cheated_widgets));
         var sell_rate = pd.stats.seller_rps;
@@ -4695,14 +4703,6 @@ $(document).ready(function() {
     </div>
     <div id="sell_div">
         <p>
-       	    <script>
-                if (pd.stats.cheated_cash > 0) {
-               		document.getElementById("cheatUSDsmall").innerHTML = "$<span id="cheated_cash">0</span> cheated cash";
-             	}
-	        else {
-                	document.getElementById("cheatUSDsmall").innerHTML = "Cool";
-             	}
-            </script>
             <span id="sell_lbl">United States Dollars</span>
             ($<span id="sell_roi">0</span> per bitcoin)<br />
             $<strong><span id="sell_amt">0</span></strong><br />
