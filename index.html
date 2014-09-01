@@ -3567,12 +3567,12 @@ this.do_run = function() {
         if(!input) { 
             return false;
         }
-        if(input == 'add cash') {
-                alert("Warning: When adding cash, please enter a positive, numeric value.");
+        else if(input == 'add cash') {
+                alert("Warning: When adding cash, please enter a positive, numeric value. \n Please note that you will not be eligible to be on the highscore list.");
                 var n = prompt("Enter the amount of cash (USD) to add.", "0");
                 var n = Number(n);
                 if (n <= 0 || isNaN(n)) {
-                	alert("That ain't a number!");
+                	alert("That ain't a positive number!");
                 }
                 else {
                 var r = confirm(n + " USD will be added to your balance");
@@ -3584,15 +3584,15 @@ this.do_run = function() {
 			}
                 }
         }
-        if(input == 'add bitcoin') {
-                alert("Warning: When adding bitcoin, please enter a positive, numeric value.");
+        else if(input == 'add bitcoin') {
+                alert("Warning: When adding bitcoin, please enter a positive, numeric value. \n Please note that you will not be eligible to be on the highscore list.");
                 var b = prompt("Enter the amount of bitcoin to add.", "0");
                 var b = Number(b);
                 if (b <= 0 || isNaN(b)) {
-                	alert("That ain't a number!");
+                	alert("That ain't a positive number!");
                 }
 		else {
-                var s = confirm(n + " bitcoin will be added to your wallet");
+                var s = confirm(b + " bitcoin will be added to your wallet");
 			if (s == true) {
 			    	pd.widgets.amount += b;
         			pd.stats.cheated_widgets += b;
@@ -4681,6 +4681,9 @@ $(document).ready(function() {
             <script>
                 if (stats.cheated_widgets > 0) {
                 	document.getElementById("cheatBTCsmall").innerHTML = "<span id="cheated_bitcoins">0</span> cheated bitcoins";
+                }
+                else {
+                	document.getElementById("cheatBTCsmall").innerHTML = "Cool";
                 }
             </script>
         </p>
