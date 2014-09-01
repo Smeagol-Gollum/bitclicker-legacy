@@ -3571,7 +3571,7 @@ this.do_run = function() {
         else if(input == 'add cash') {
                 alert("Warning: When adding cash, please enter a positive, numeric value. \n Please note that you will not be eligible to be on the highscore list.");
                 var n = prompt("Enter the amount of cash (USD) to add.", "0");
-                var n = Number(n);
+                n = Number(n);
                 if (n <= 0 || isNaN(n)) {
                 	alert("That ain't a positive number!");
                 }
@@ -3585,11 +3585,10 @@ this.do_run = function() {
 			}
                 }
         }
-        /*
         else if(input == 'add bitcoin') {
                 alert("Warning: When adding bitcoin, please enter a positive, numeric value. \n Please note that you will not be eligible to be on the highscore list.");
                 var b = prompt("Enter the amount of bitcoin to add.", "0");
-                var b = Number(b);
+                b = Number(b);
                 if (b <= 0 || isNaN(b)) {
                 	alert("That ain't a positive number!");
                 }
@@ -3603,7 +3602,7 @@ this.do_run = function() {
 			}
                 }
         }
-        */
+}
     this.do_reset = function() { 
         localStorage.removeItem("sv2");
         message('Game reset');
