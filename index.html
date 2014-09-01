@@ -3585,6 +3585,7 @@ this.do_run = function() {
 			}
                 }
         }
+        /*
         else if(input == 'add bitcoin') {
                 alert("Warning: When adding bitcoin, please enter a positive, numeric value. \n Please note that you will not be eligible to be on the highscore list.");
                 var b = prompt("Enter the amount of bitcoin to add.", "0");
@@ -3602,6 +3603,7 @@ this.do_run = function() {
 			}
                 }
         }
+        */
     this.do_reset = function() { 
         localStorage.removeItem("sv2");
         message('Game reset');
@@ -4675,9 +4677,9 @@ $(document).ready(function() {
         <p>
             <span id="make_lbl">Bitcoins</span>
             (bitcoin price is <em><span id="make_qlt">NA</span></em>)<br />
-            <strong><span class="fa fa-btc"></span></span><span id="make_amt">0</span></strong><br />
-            <small><span class="fa fa-btc"></span><span id="clicker_rps">0</span> bitcoins mined per second (net)</small><br />
-            <small><span class="fa fa-btc"></span><span id="clicker_rps_g">0</span> bitcoins mined per second (gross)</small><br />
+            <span class="fa fa-btc"></span><strong></span><span id="make_amt">0</span></strong><br />
+            <small></span><span id="clicker_rps">0</span> bitcoins mined per second (net)</small><br />
+            <small><span id="clicker_rps_g">0</span> bitcoins mined per second (gross)</small><br />
             <small class="cheat_btc" id="cheatBTCsmall" style="font-weight: bold;"><span id="cheated_bitcoins">0</span> cheated bitcoins</small>
             <script>
              //   if (stats.cheated_widgets > 0) {
