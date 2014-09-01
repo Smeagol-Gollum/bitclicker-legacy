@@ -3568,11 +3568,11 @@ this.do_run = function() {
             return false;
         }
         if(input == 'add cash') {
-                alert("Warning: When adding cash, please enter a positive, numeric value.")
+                alert("Warning: When adding cash, please enter a positive, numeric value.");
                 var n = prompt("Enter the amount of cash (USD) to add.", "0");
                 var n = Number(n);
                 if (n <= 0 || isNaN(n)) {
-                	alert("That ain't a number!")
+                	alert("That ain't a number!");
                 }
                 else {
                 var r = confirm(n + " USD will be added to your balance");
@@ -3585,11 +3585,11 @@ this.do_run = function() {
                 }
         }
         if(input == 'add bitcoin') {
-                alert("Warning: When adding bitcoin, please enter a positive, numeric value.")
+                alert("Warning: When adding bitcoin, please enter a positive, numeric value.");
                 var b = prompt("Enter the amount of bitcoin to add.", "0");
                 var b = Number(b);
                 if (b <= 0 || isNaN(b)) {
-                	alert("That ain't a number!")
+                	alert("That ain't a number!");
                 }
 		else {
                 var s = confirm(n + " bitcoin will be added to your wallet");
