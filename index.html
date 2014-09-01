@@ -4681,7 +4681,7 @@ $(document).ready(function() {
             <small><span id="clicker_rps_g">0</span> bitcoins mined per second (gross)</small><br />
             <small class="cheat_btc" id="cheatBTCsmall" style="font-weight: bold;"></small>
             <script>
-                if (stats.cheated_widgets > 0) {
+                if (pd.stats.cheated_widgets > 0) {
                		document.getElementById("cheatBTCsmall").innerHTML = "<span id="cheated_bitcoins">0</span> cheated bitcoins";
              	}
 	        else {
@@ -4700,7 +4700,7 @@ $(document).ready(function() {
             <small>$<span id="seller_rps">0</span> exchanged per second</small><br />
 	    <small class="cheat_btc" id="cheatUSDsmall" style="font-weight: bold;"></small>
             <script>
-                if (stats.cheated_widgets > 0) {
+                if (pd.stats.cheated_cash > 0) {
                		document.getElementById("cheatUSDsmall").innerHTML = "$<span id="cheated_cash">0</span> cheated cash";
              	}
 	        else {
