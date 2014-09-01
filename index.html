@@ -4693,13 +4693,7 @@ $(document).ready(function() {
     </div>
     <div id="sell_div">
         <p>
-            <span id="sell_lbl">United States Dollars</span>
-            ($<span id="sell_roi">0</span> per bitcoin)<br />
-            $<strong><span id="sell_amt">0</span></strong><br />
-            <small>$<span id="safe_cash">0</span> in tax havens</small><br />
-            <small>$<span id="seller_rps">0</span> exchanged per second</small><br />
-	    <small class="cheat_btc" id="cheatUSDsmall" style="font-weight: bold;"></small>
-            <script>
+       	    <script>
                 if (pd.stats.cheated_cash > 0) {
                		document.getElementById("cheatUSDsmall").innerHTML = "$<span id="cheated_cash">0</span> cheated cash";
              	}
@@ -4707,6 +4701,12 @@ $(document).ready(function() {
                 	document.getElementById("cheatUSDsmall").innerHTML = "Cool";
              	}
             </script>
+            <span id="sell_lbl">United States Dollars</span>
+            ($<span id="sell_roi">0</span> per bitcoin)<br />
+            $<strong><span id="sell_amt">0</span></strong><br />
+            <small>$<span id="safe_cash">0</span> in tax havens</small><br />
+            <small>$<span id="seller_rps">0</span> exchanged per second</small><br />
+	    <small class="cheat_btc" id="cheatUSDsmall" style="font-weight: bold;"></small>
         </p>
         <div id="sell_btn">EXCHANGE!</div>
 	<br>
