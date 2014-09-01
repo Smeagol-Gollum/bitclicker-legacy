@@ -3944,16 +3944,16 @@ this.do_run = function() {
     
     function display_cheat() {
         if (pd.stats.cheated_widgets > 0) { // cheated BTC
-            document.getElementById("cheatBTCsmall").innerHTML = "<span id=\"cheated_bitcoins\">0</span> cheated bitcoins";
+            $('#cheatBTCsmall').html("<span id=\"cheated_bitcoins\">0</span> cheated bitcoins");
         }
 	else if (pd.stats.cheated_widgets <= 0)  { // no cheated BTC
-             document.getElementById("cheatBTCsmall").innerHTML = "";
+             $('#cheatBTCsmall').html("");
         }
         else if (pd.stats.cheated_cash > 0) { // cheated cash
-       	    document.getElementById("cheatUSDsmall").innerHTML = "$<span id=\"cheated_cash\">0</span> cheated cash";
+       	    $('#cheatUSDsmall').html("$<span id=\"cheated_cash\">0</span> cheated cash");
         }
 	else if (pd.stats.cheated_cash <= 0) { // no cheated cash
-            document.getElementById("cheatUSDsmall").innerHTML = "";
+            $('#cheatUSDsmall').html("");
         }
     }
 
