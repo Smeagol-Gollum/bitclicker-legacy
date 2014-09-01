@@ -3942,19 +3942,27 @@ this.do_run = function() {
         document.title = '$'+pretty_bigint(pd.cash.amount)+' | '+pd.title;
     }
     
-    function display_cheat() {
-        if (pd.stats.cheated_widgets > 0) { // cheated BTC
-            $('#cheatBTCsmall').show();
-        }
-	else if (pd.stats.cheated_widgets <= 0)  { // no cheated BTC
-             $('#cheatBTCsmall').hide();
-        }
-        else if (pd.stats.cheated_cash > 0) { // cheated cash
+    function fix_cash_cheat() {
+    	if (pd.stats.cheated_cash > 0) { // cheated cash
        	    $('#cheatUSDsmall').show();
         }
 	else if (pd.stats.cheated_cash <= 0) { // no cheated cash
             $('#cheatUSDsmall').hide();
         }
+    }
+    
+    function fix_btc_cheat() {
+    	if (pd.stats.cheated_widgets > 0) { // cheated BTC
+            $('#cheatBTCsmall').show();
+        }
+	else if (pd.stats.cheated_widgets <= 0)  { // no cheated BTC
+             $('#cheatBTCsmall').hide();
+        }
+    }
+    
+    function display_cheat() {
+	fix_cash_cheat();
+	fix_btc_cheat();
     }
 
     function fix_make_sell() { 
