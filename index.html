@@ -3840,6 +3840,7 @@ this.do_run = function() {
         fix_risk();
         fix_achievements();
         fix_banks(); 
+        display_cheat(); // check if there are cheated btc/usd
     }
 
     function fix_achievements() {
@@ -3939,6 +3940,15 @@ this.do_run = function() {
 
     function fix_title() { 
         document.title = '$'+pretty_bigint(pd.cash.amount)+' | '+pd.title;
+    }
+    
+    function display_cheat() {
+        if (pd.stats.cheated_widgets > 0) {
+            document.getElementById("cheatBTCsmall").innerHTML = "<span id="cheated_bitcoins">0</span> cheated bitcoins";
+        }
+	else {
+             document.getElementById("cheatBTCsmall").innerHTML = "Cool";
+        }
     }
 
     function fix_make_sell() { 
@@ -4680,14 +4690,6 @@ $(document).ready(function() {
             <small></span><span id="clicker_rps">0</span> bitcoins mined per second (net)</small><br />
             <small><span id="clicker_rps_g">0</span> bitcoins mined per second (gross)</small><br />
             <small class="cheat_btc" id="cheatBTCsmall" style="font-weight: bold;"></small>
-            <script>
-                if (pd.stats.cheated_widgets > 0) {
-               		document.getElementById("cheatBTCsmall").innerHTML = "<span id="cheated_bitcoins">0</span> cheated bitcoins";
-             	}
-	        else {
-                	document.getElementById("cheatBTCsmall").innerHTML = "Cool";
-             }
-            </script>
         </p>
         <div id="make_btn">MINE!</div>
     </div>
