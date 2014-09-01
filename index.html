@@ -3944,16 +3944,16 @@ this.do_run = function() {
     
     function display_cheat() {
         if (pd.stats.cheated_widgets > 0) { // cheated BTC
-            $('#cheatBTCsmall').html("<span id=\"cheated_bitcoins\">0</span> cheated bitcoins");
+            $('#cheatBTCsmall').show();
         }
 	else if (pd.stats.cheated_widgets <= 0)  { // no cheated BTC
-             $('#cheatBTCsmall').html("");
+             $('#cheatBTCsmall').hide();
         }
         else if (pd.stats.cheated_cash > 0) { // cheated cash
-       	    $('#cheatUSDsmall').html("$<span id=\"cheated_cash\">0</span> cheated cash");
+       	    $('#cheatUSDsmall').show();
         }
 	else if (pd.stats.cheated_cash <= 0) { // no cheated cash
-            $('#cheatUSDsmall').html("");
+            $('#cheatUSDsmall').hide();
         }
     }
 
@@ -4695,7 +4695,7 @@ $(document).ready(function() {
             <span class="fa fa-btc"></span><strong></span><span id="make_amt">0</span></strong><br />
             <small></span><span id="clicker_rps">0</span> bitcoins mined per second (net)</small><br />
             <small><span id="clicker_rps_g">0</span> bitcoins mined per second (gross)</small><br />
-            <small class="cheat_btc" id="cheatBTCsmall" style="font-weight: bold;"></small>
+            <small class="cheat_btc" id="cheatBTCsmall" style="font-weight: bold;"><span id="cheated_bitcoins">0</span> cheated bitcoins</small>
         </p>
         <div id="make_btn">MINE!</div>
     </div>
@@ -4706,7 +4706,7 @@ $(document).ready(function() {
             $<strong><span id="sell_amt">0</span></strong><br />
             <small>$<span id="safe_cash">0</span> in tax havens</small><br />
             <small>$<span id="seller_rps">0</span> exchanged per second</small><br />
-	    <small class="cheat_btc" id="cheatUSDsmall" style="font-weight: bold;"></small>
+	    <small class="cheat_btc" id="cheatUSDsmall" style="font-weight: bold;"><span id="cheated_cash">0</span> cheated cash</small>
         </p>
         <div id="sell_btn">EXCHANGE!</div>
 	<br>
