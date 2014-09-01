@@ -3568,14 +3568,14 @@ this.do_run = function() {
             return false;
         }
         if(input == 'add cash') {
-                alert("Warning: When adding cash, please enter a numeric value, or the\ngame will cease to function.  Negative values are fine.")
+                alert("Warning: When adding cash, please enter a positive, numeric value.")
                 var n = prompt("Enter the amount of cash (USD) to add.", "0");
                 var n = Number(n);
-                if (n <= 0) {
-                	alert("Please enter a positive value, or press cancel.")
+                if (n <= 0 || isNaN(n)) {
+                	alert("Invalid input.")
                 }
                 else {
-                var r = confirm( + " USD will be added to your balance");
+                var r = confirm(n + " USD will be added to your balance");
 			if (r == true) {
 			    	earn_cash(n);
 			    	pd.stats.cheated_cash += n;
