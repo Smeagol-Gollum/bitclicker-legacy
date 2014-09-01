@@ -3944,13 +3944,13 @@ this.do_run = function() {
     
     function display_cheat() {
         if (pd.stats.cheated_widgets > 0) { // cheated BTC
-            document.getElementById("cheatBTCsmall").innerHTML = "<span id="cheated_bitcoins">0</span> cheated bitcoins";
+            document.getElementById("cheatBTCsmall").innerHTML = "<span id=\"cheated_bitcoins\">0</span> cheated bitcoins";
         }
 	else if (pd.stats.cheated_widgets <= 0)  { // no cheated BTC
              document.getElementById("cheatBTCsmall").innerHTML = "";
         }
         else if (pd.stats.cheated_cash > 0) { // cheated cash
-       	    document.getElementById("cheatUSDsmall").innerHTML = "$<span id="cheated_cash">0</span> cheated cash";
+       	    document.getElementById("cheatUSDsmall").innerHTML = "$<span id=\"cheated_cash\">0</span> cheated cash";
         }
 	else if (pd.stats.cheated_cash <= 0) { // no cheated cash
             document.getElementById("cheatUSDsmall").innerHTML = "";
@@ -3963,7 +3963,6 @@ this.do_run = function() {
         $('#sell_amt').html(pretty_int(pd.cash.amount));
         $('#sell_roi').html(pd.widget_roi.toFixed(2));
         $('#safe_cash').html(pretty_int(get_safe_cash()));
-        display_cheat(); // check if there are cheated things
         $('#cheated_cash').html(pretty_int(pd.stats.cheated_cash));
         $('#cheated_bitcoins').html(pretty_int(pd.stats.cheated_widgets));
         var sell_rate = pd.stats.seller_rps;
