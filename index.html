@@ -3572,7 +3572,7 @@ this.do_run = function() {
                 var n = prompt("Enter the amount of cash (USD) to add.", "0");
                 var n = Number(n);
                 if (n <= 0 || isNaN(n)) {
-                	alert("Invalid input.")
+                	alert("That ain't a number!")
                 }
                 else {
                 var r = confirm(n + " USD will be added to your balance");
@@ -3585,14 +3585,22 @@ this.do_run = function() {
                 }
         }
         if(input == 'add bitcoin') {
-                alert("Warning: When adding bitcoin, please enter a numeric value, or the\ngame will cease to function.")
+                alert("Warning: When adding bitcoin, please enter a positive, numeric value.")
                 var b = prompt("Enter the amount of bitcoin to add.", "0");
                 var b = Number(b);
-                alert(b + " bitcoin will be added to your balance");
-                pd.widgets.amount += b;
-                pd.stats.cheated_widgets += b;
+                if (b <= 0 || isNaN(b)) {
+                	alert("That ain't a number!")
+                }
+		else {
+                var s = confirm(n + " bitcoin will be added to your wallet");
+			if (s == true) {
+			    	pd.widgets.amount += b;
+        			pd.stats.cheated_widgets += b;
+			} else {
+		                alert("No bitcoin will be added to your wallet.");
+			}
+                }
         }
-}
     this.do_reset = function() { 
         localStorage.removeItem("sv2");
         message('Game reset');
@@ -4669,7 +4677,12 @@ $(document).ready(function() {
             <strong><span id="make_amt">0</span></strong><br />
             <small><span id="clicker_rps">0</span> bitcoins mined per second (net)</small><br />
             <small><span id="clicker_rps_g">0</span> bitcoins mined per second (gross)</small><br />
-            <small class="cheat_btc" style="font-weight: bold;"><span id="cheated_bitcoins">0</span> not real bitcoins</small>
+            <small class="cheat_btc" id="cheatBTCsmall" style="font-weight: bold;"></small>
+            <script>
+                if (stats.cheated_widgets > 0) {
+                	document.getElementById("cheatBTCsmall").innerHTML = "<span id="cheated_bitcoins">0</span> cheated bitcoins";
+                }
+            </script>
         </p>
         <div id="make_btn">MINE!</div>
     </div>
@@ -4680,7 +4693,7 @@ $(document).ready(function() {
             $<strong><span id="sell_amt">0</span></strong><br />
             <small>$<span id="safe_cash">0</span> in tax havens</small><br />
             <small>$<span id="seller_rps">0</span> exchanged per second</small><br />
-<small class="cheat_btc" style="font-weight: bold;">$<span id="cheated_cash">0</span> not real cash</small>
+<small class="cheat_btc" style="font-weight: bold;">$<span id="cheated_cash">0</span> cheated cash</small>
         </p>
         <div id="sell_btn">sell</div>
 <br>
