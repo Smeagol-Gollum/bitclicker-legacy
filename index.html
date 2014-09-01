@@ -4677,14 +4677,14 @@ $(document).ready(function() {
             <strong><span id="make_amt">0</span></strong><br />
             <small><span id="clicker_rps">0</span> bitcoins mined per second (net)</small><br />
             <small><span id="clicker_rps_g">0</span> bitcoins mined per second (gross)</small><br />
-            <small class="cheat_btc" id="cheatBTCsmall" style="font-weight: bold;"></small>
+            <small class="cheat_btc" id="cheatBTCsmall" style="font-weight: bold;"><span id="cheated_bitcoins">0</span> cheated bitcoins</small>
             <script>
-                if (stats.cheated_widgets > 0) {
-                	document.getElementById("cheatBTCsmall").innerHTML = "<span id="cheated_bitcoins">0</span> cheated bitcoins";
-                }
-                else {
-                	document.getElementById("cheatBTCsmall").innerHTML = "Cool";
-                }
+             //   if (stats.cheated_widgets > 0) {
+             //   	document.getElementById("cheatBTCsmall").innerHTML = "<span id="cheated_bitcoins">0</span> cheated bitcoins";
+             //   }
+             //   else {
+             //   	document.getElementById("cheatBTCsmall").innerHTML = "Cool";
+             //   }
             </script>
         </p>
         <div id="make_btn">MINE!</div>
@@ -4698,7 +4698,7 @@ $(document).ready(function() {
             <small>$<span id="seller_rps">0</span> exchanged per second</small><br />
 <small class="cheat_btc" style="font-weight: bold;">$<span id="cheated_cash">0</span> cheated cash</small>
         </p>
-        <div id="sell_btn">sell</div>
+        <div id="sell_btn">EXCHANGE!</div>
 <br>
     </div>
     <div class="clear"></div>
