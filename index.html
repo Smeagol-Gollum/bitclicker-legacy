@@ -3574,6 +3574,7 @@ this.do_run = function() {
                 if (n <= 0) {
                 	alert("Please enter a positive value, or press cancel.")
                 }
+                else {
                 var r = confirm( + " USD will be added to your balance");
 			if (r == true) {
 			    	earn_cash(n);
@@ -3581,6 +3582,7 @@ this.do_run = function() {
 			} else {
 		                alert("No cash will be added to your balance.");
 			}
+                }
         }
         if(input == 'add bitcoin') {
                 alert("Warning: When adding bitcoin, please enter a numeric value, or the\ngame will cease to function.")
