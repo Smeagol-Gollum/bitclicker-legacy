@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 <link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <link rel="icon" type="image/png" href="favicon.png" />
 
-<title>Bitcoin Clicker</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+<title>BitClicker 0.2.2&beta; - A Bitcoin Click Game</title>
+<meta name="description" content="Play BitClicker, and use your mouse to rise from a lowly CPU miner set up in your dorm to a huge datacenter filled to the brim with ASICs that ravage the the bitcoin network.">
 
 <script>
 var has_gaq = false;
@@ -697,163 +700,8 @@ Base64DecodeEnumerator.prototype =
 };
 </script>
 
-    <!--// Google analytics //-->
-<script>
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-20427551-8']);
-_gaq.push(['_setDomainName', 'nullism.com']);
-_gaq.push(['_setAllowLinker', true]);
-_gaq.push(['_trackPageview']);
-_gaq.push(['_setSampleRate', '70']);
-
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript';
-  ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
-  'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(ga, s);
-})();
-has_gaq = true;
-</script>
-<!--// END Google analytics //-->
-
-    <script>
-  has_loggly = true;
-  
-(function(window, document) {
-    var LOGGLY_INPUT_PREFIX = 'http' + ( ('https:' === document.location.protocol ? 's' : '') ) + '://logs-01.loggly.com/inputs/',
-        LOGGLY_INPUT_SUFFIX = '.gif?',
-        LOGGLY_SESSION_KEY = 'logglytrackingsession',
-        LOGGLY_SESSION_KEY_LENGTH = LOGGLY_SESSION_KEY.length + 1;
-
-    function uuid() {
-
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-            return v.toString(16);
-        });  
-    }
-    
-    function LogglyTracker() {
-        this.key = false;
-    }
-    
-    function setKey(tracker, key) {
-        tracker.key = key;
-        tracker.setSession();
-        setInputUrl(tracker);
-    }
-    
-    function setInputUrl(tracker) {
-        tracker.inputUrl = LOGGLY_INPUT_PREFIX + tracker.key + LOGGLY_INPUT_SUFFIX;
-    }
-    
-    LogglyTracker.prototype = {
-        setSession: function(session_id) {
-            if(session_id) {
-                this.session_id = session_id;
-                this.setCookie(this.session_id);
-            } else if(!this.session_id) {
-                this.session_id = this.readCookie();
-                if(!this.session_id) {
-                    this.session_id = uuid();
-                    this.setCookie(this.session_id);
-                }
-            }
-        },
-        push: function(data) {
-            var type = typeof data;
-            
-            if( !data || !(type === 'object' || type === 'string') ) {
-                return;
-            }
-
-            var self = this;
-
-            setTimeout(function() {
-                if(type === 'string') {
-                    data = {
-                        'text': data
-                    };
-                } else {
-                    if(data.logglyKey) {
-                        setKey(self, data.logglyKey);
-                        return;
-                    }
-                
-                    if(data.session_id) {
-                        self.setSession(data.session_id);
-                        return;
-                    }
-                }
-                
-                if(!self.key) {
-                    return;
-                }
-            
-                self.track(data);
-            }, 0);
-            
-        },
-        track: function(data) {
-
-            data.sessionId = this.session_id;
-        
-            try {
-                var im = new Image(),
-                    q = 'PLAINTEXT=' + encodeURIComponent(JSON.stringify(data));
-                im.src = this.inputUrl + q;
-            } catch (ex) {
-                if (window && window.console && typeof window.console.log === 'function') {
-                    console.log("Failed to log to loggly because of this exception:\n" + ex);
-                    console.log("Failed log data:", data);
-                }
-            }
-        },
-       
-        readCookie: function() {
-            var cookie = document.cookie,
-                i = cookie.indexOf(LOGGLY_SESSION_KEY);
-            if(i < 0) {
-                return false;
-            } else {
-                var end = cookie.indexOf(';', i + 1);
-                end = end < 0 ? cookie.length : end;
-                return cookie.slice(i + LOGGLY_SESSION_KEY_LENGTH, end);
-            }
-        },
-        setCookie: function(value) {
-            document.cookie = LOGGLY_SESSION_KEY + '=' + value;
-        }
-    };
-    
-    var existing = window._LTracker;
-    
-    var tracker = new LogglyTracker();
-    
-    if(existing && existing.length ) {
-        var i = 0,
-            eLength = existing.length;
-        for(i = 0; i < eLength; i++) {
-            tracker.push(existing[i]);
-        }
-    }
-    
-    window._LTracker = tracker; // default global tracker
-    
-    window.LogglyTracker = LogglyTracker;   // if others want to instantiate more than one tracker
-    
-})(window, document);
-
-  var _LTracker = _LTracker || [];
-  _LTracker.push({'logglyKey': '47fed687-0ba9-4cef-8108-29a1543b5bcc' });
-</script>
-
-
 <style type="text/css">
 body { 
-    font-size: 1.0em;
     font-family: 'Exo 2', Verdana, Helvetica, Arial;
     color: #333;
     background: #f89900;
@@ -888,20 +736,6 @@ button:disabled, button.disabled {
     cursor: default;
     text-shadow: none;
 }
-
-h1, h2 { 
-    color: #fff;
-    text-shadow: -1px -1px 0px #27c;
-}
-h3 { 
-    font-size: 1.0em;
-}
-h2 { 
-    font-size: 1.2em;
-}
-h1 { 
-    font-size: 1.4em;
-}
 #updated { 
     display: none;
     background: #cfc;
@@ -911,12 +745,10 @@ h1 {
 }
 #last_saved { 
     color: #eee;
-    font-size: 0.9em;
     text-align: center;
 }
 #risk_div { 
     color: #fff;
-    font-size: 1.1em;
     padding: 3px;
     margin-bottom: 5px;
     text-align: center;
@@ -952,7 +784,6 @@ h1 {
     display: none;
     z-index: 1500;
     position: fixed;
-    font-size: 1.3em;
     font-weight: bold;
     color: #ccc;
     text-shadow: 0px 1px 1px #333;
@@ -998,7 +829,6 @@ h1 {
     padding: 10px;
     width: 220px;
     font-weight: bold;
-    font-size: 1.1em;
     color: #fff;
     cursor: pointer;
     border-radius: 10px;
@@ -1017,32 +847,12 @@ h1 {
     border-color: #0a0;
     text-shadow: -1px -1px 1px #0a0;
 }
-#btctalk_btn {
-    -moz-user-select: none; 
-    -webkit-user-select: none; 
-    -ms-user-select:none; 
-    user-select:none; 
-    margin: auto; 
-    padding: 10px;
-    width: 220px;
-    font-weight: bold;
-    font-size: 1.1em;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 10px;
-    border: 2px solid #ccc;
-	background-color: #00bcff;
-    border-color: #39788f;
-    text-shadow: -1px -1px 1px #39788f;
-}
-
-
 .semi_trans { 
     opacity: 0.5;
     -moz-opacity: 0.5;
 }
 .s_div, .w_div { 
-   
+    width: 97%;
     border-radius: 8px;
     background: #fff;
     margin: 4px;
@@ -1066,9 +876,6 @@ h1 {
 }
 .pull_right { 
     float: right;
-}
-.small { 
-    font-size: 0.8em;
 }
 .grey { 
     color: #777;
@@ -1124,21 +931,6 @@ h1 {
     margin: 2px;
     border: 1px solid #eee;
 }
-.btn { 
-    padding: 5px;
-    background: #ddd;
-    font-weight: bold;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #ccc;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px #bbb;
-}
-.btn:disabled { 
-    cursor: default;
-}
-
 .btn-large { 
     font-size: 1.1em;
     padding: 10px;
@@ -1163,7 +955,7 @@ h1 {
 @media screen and (min-height: 550px) and (min-width: 700px) { 
     #left_floatable {
         position: fixed; 
-        top: 5px;
+        top: 110px;
         left: 5px;
         border: none;
         background: none;
@@ -1210,7 +1002,7 @@ h1 {
         width: 30%;
     }
     #tab_divs, #tab_btns { 
-        width: 65%;
+        width: 50%;
     }
 }
 @media screen and (min-width: 1300px) { 
@@ -1221,7 +1013,7 @@ h1 {
         width: 25%;
     }
     #tab_divs, #tab_btns { 
-        width: 70%;
+        width: 50%;
     }
 }
 @media screen and (min-width: 1600px) { 
@@ -1232,7 +1024,7 @@ h1 {
         width: 20%;
     }
     #tab_divs, #tab_btns { 
-        width: 75%;
+        width: 60%;
     }
 }
 @media screen and (min-width: 1900px) { 
@@ -1243,7 +1035,7 @@ h1 {
         width: 16%;
     }
     #tab_divs, #tab_btns { 
-        width: 80%;
+        width: 50%;
     }
 }
 
@@ -1252,8 +1044,11 @@ h1 {
 </style>
 
 </head>
+<body style="padding-top:120px;">
 
-<body>
+<div style="position: absolute; top: 15px; width: 100%;" class="text-center">
+   <h1>BitClicker</h1>
+</div>
 
 <script>
 
@@ -1279,8 +1074,8 @@ var tick_ms = 100;
 function Game() { 
 
     var pd = {
-        'title':'Bitcoin Clicker',
-        'version':'0.8.3',
+        'title':'BitClicker',
+        'version':'0.2.2-beta',
         'make_amount':1,
         'make_rps_multiplier':0,
         'sell_amount':1,
@@ -1391,9 +1186,14 @@ function Game() {
                 13: 'good',
                 16: 'great',
                 20: 'really great',
-                25: 'awesome',
-                50: 'really awesome',
-                100: 'extremely awesome!',
+                25: 'like 2011',
+                50: 'awesome',
+                100: 'at early 2013 levels',
+                300: 'shooting up',
+                500: 'going to the moon',
+                800: 'going to mars',
+                1242: 'at an all-time high!',
+                250: 'at current levels',
             },
         },
 
@@ -1617,12 +1417,12 @@ function Game() {
                 'amount':0,
                 'rps':100,
                 'risk':.1,
-                'base_cost':150000,
-                'cost':150000,
+                'base_cost':200000,
+                'cost':200000,
                 'unlock_rps':100,
                 'unlocked':false,
                 'sid':'c6',
-				'img':'http://snappi.wpengine.netdna-cdn.com/wp-content/uploads/2009/08/ati_radeon_hd_4870_1.jpg',
+		'img':'http://snappi.wpengine.netdna-cdn.com/wp-content/uploads/2009/08/ati_radeon_hd_4870_1.jpg',
             },
             '10_under_lab': {
                 'label':'AEmD 5870 GPU',
@@ -1630,12 +1430,12 @@ function Game() {
                 'amount':0,
                 'risk':0.005,
                 'rps':500,
-                'base_cost':600000,
-                'cost':600000,
+                'base_cost':1000000,
+                'cost':1000000,
                 'unlock_rps':250,
                 'unlocked':false,
                 'sid':'c7',
-				'img':'http://www.amd.com/PublishingImages/Public/Photograph_ProductShots/PNG/40810.png',
+		'img':'http://i.imgur.com/nVhmN5U.png',
             },
             '11_bot': {
                 'label':'Triple AEmD 7990 GPUs',
@@ -1643,12 +1443,12 @@ function Game() {
                 'amount':0,
                 'risk':0.1,
                 'rps':3000,
-                'base_cost':3000000,
-                'cost':3000000,
+                'base_cost':5000000,
+                'cost':5000000,
                 'unlock_rps':750,
                 'unlocked':false,
                 'sid':'c8',
-				'img':'http://i.imgur.com/NmkcKv3.jpg?1?1052',
+		'img':'http://i.imgur.com/NmkcKv3.jpg?1?1052',
             },
             '11_bot_s': {
                 'label':'Dual Block Destroyer Blades',
@@ -1656,8 +1456,8 @@ function Game() {
                 'amount':0,
                 'risk':0.1,
                 'rps':20000,
-                'base_cost':15000000,
-                'cost':15000000,
+                'base_cost':30000000,
+                'cost':30000000,
                 'unlock_rps':3900,
                 'unlocked':false,
                 'sid':'c9',
@@ -1669,12 +1469,12 @@ function Game() {
                 'amount':0,
                 'risk':0.005,
                 'rps':100000,
-                'base_cost':75000000,
-                'cost':75000000,
+                'base_cost':200000000,
+                'cost':200000000,
                 'unlock_rps':24500,
                 'unlocked':false,
                 'sid':'c10',
-				'img':'https://www.kncminer.com/pictures/category/5426.jpg',
+		'img':'http://i.imgur.com/S5NAULj.jpg',
             },
             'country':{
                 'label':'ByteForce Mini Rig',
@@ -1682,25 +1482,25 @@ function Game() {
                 'amount':0,
                 'risk':0.00000001,
                 'rps':500000,
-                'base_cost':400000000,
-                'cost':400000000,
+                'base_cost':1000000000,
+                'cost':1000000000,
                 'unlock_rps':125000,
                 'unlocked':false,
                 'sid':'c11',
-				'img':'http://i.imgur.com/fGBFBgo.png',
+		'img':'http://i.imgur.com/fGBFBgo.png',
             },
             '12_moon_lab': {
-                'label':'EarthMiner IV',
-                'description':'One of the fastest and most efficient bitcoin miners.',
+                'label':'AuntMiner S5',
+                'description':'Over 1 TH/s is churned out by this 3rd-generation rig.',
                 'amount':0,
                 'risk':0.00000001,
                 'rps':2000000,
-                'base_cost':2000000000,
-                'cost':2000000000,
+                'base_cost':5000000000,
+                'cost':5000000000,
                 'unlock_rps':650000,
                 'unlocked':false,
                 'sid':'c12',
-				'img':'http://cointerra.com/wp-content/uploads/2013/10/rear-iso-wo-cover1.jpg',
+		'img':'http://i.imgur.com/ez9vsR9.jpg',
             },
             'station': {
                 'label':'14nm ASIC Technology',
@@ -1708,12 +1508,12 @@ function Game() {
                 'amount':0,
                 'risk':0.000000001,
                 'rps':10000000,
-                'base_cost':16750000000,
-                'cost':16750000000,
+                'base_cost':30000000000,
+                'cost':30000000000,
                 'unlock_rps':2750000,
                 'unlocked':false,
                 'sid':'c13',
-				'img':'http://i.imgur.com/GOSfb3s.png',
+		'img':'http://i.imgur.com/GOSfb3s.png',
             },
             'meth_factory':{
                 'label':'Experimental 5nm ASIC Technology',
@@ -1722,12 +1522,12 @@ function Game() {
                 'amount':0,
                 'risk':0.55,
                 'rps':75000000,
-                'base_cost':85500000000,
-                'cost':85500000000,
+                'base_cost':200000000000,
+                'cost':200000000000,
                 'unlock_rps':13000000,
                 'unlocked':false,
                 'sid':'c14',
-				'img':'http://i.imgur.com/vMBdaRA.jpg',
+		'img':'http://i.imgur.com/vMBdaRA.jpg',
             },
             'belt':{
                 'label':'Highly Advanced 0.5nm ASIC Chips',
@@ -1736,12 +1536,12 @@ function Game() {
                 'amount':0,
                 'risk':0.000001,
                 'rps':500000000,
-                'base_cost':411700000000,
-                'cost':411700000000,
+                'base_cost':1000000000000,
+                'cost':1000000000000,
                 'unlock_rps':90000000,
                 'unlocked':false,
                 'sid':'c15',
-				'img':'http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/8/26/1251307299242/Broken-glass-003.jpg',
+		'img':'http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/8/26/1251307299242/Broken-glass-003.jpg',
             },
             'c_planet':{
                 'label':'Satoshi\'s Miner',
@@ -1750,12 +1550,12 @@ function Game() {
                 'amount':0,
                 'risk':0.000001,
                 'rps':5000000000,
-                'base_cost':2000000000000,
-                'cost':200000000000,
+                'base_cost':5000000000000,
+                'cost':500000000000,
                 'unlock_rps':600000000,
                 'unlocked':false,
                 'sid':'c16',
-				'img':'http://assets2.motherboard.tv/content-images/contentimage/no-slug/7deda737ec724e8499b5dc273024082f.jpg',
+		'img':'http://assets2.motherboard.tv/content-images/contentimage/no-slug/7deda737ec724e8499b5dc273024082f.jpg',
             },
             'c_portal':{
                 'label':'51% Attack',
@@ -1764,12 +1564,12 @@ function Game() {
                 'amount':0,
                 'risk':0.1,
                 'rps':50000000000,
-                'base_cost':1500000000000,
-                'cost':1500000000000,
+                'base_cost':30000000000000,
+                'cost':30000000000000,
                 'unlock_rps':7500000000,
                 'unlocked':false,
                 'sid':'c17',
-				'img':'http://bit24.nl/bit24.nl/wp-content/uploads/2014/01/37.-51logo.jpg',
+		'img':'http://i.imgur.com/V6fmQ4g.png',
             },
         },
 
@@ -1812,7 +1612,7 @@ function Game() {
                 'unlock_rps':6,
                 'unlocked':false,
                 'sid':'s3',
-				'img':'https://coinbase.com/assets/logos/coinbase_logo_white.png',
+		'img':'http://i.imgur.com/VYiYcUu.png',
             },
             'cheap_lawyer':{
                 'label':'Precious Metals',
@@ -1825,7 +1625,7 @@ function Game() {
                 'unlock_rps':12,
                 'unlocked':false,
                 'sid':'s4',
-				'img':'http://www.etftrends.com/wp-content/uploads/2010/10/gold-bars.jpg',
+		'img':'http://www.etftrends.com/wp-content/uploads/2010/10/gold-bars.jpg',
             },
             '04_club':{
                 'label':'Ft. Gox',
@@ -1838,7 +1638,7 @@ function Game() {
                 'unlock_rps':30,
                 'unlocked':false,
                 'sid':'s5',
-				'img':'http://www.techweekeurope.co.uk/wp-content/uploads/2013/05/mtgox.png',
+		'img':'http://www.techweekeurope.co.uk/wp-content/uploads/2013/05/mtgox.png',
             },
             '05_cartel':{
                 'label':'Bytestamp',
@@ -1846,12 +1646,12 @@ function Game() {
                 'amount':0,
                 'rps':100,
                 'risk':.1,
-                'base_cost':150000,
-                'cost':150000,
+                'base_cost':200000,
+                'cost':200000,
                 'unlock_rps':100,
                 'unlocked':false,
                 'sid':'s6',
-				'img':'http://bitcoin.travel/wp-content/uploads/965366.png',
+		'img':'http://i.imgur.com/I0lBeO8.png',
             },
             '07_dea':{
                 'label':'Bitcoin City',
@@ -1859,12 +1659,12 @@ function Game() {
                 'amount':0,
                 'risk':0.005,
                 'rps':500,
-                'base_cost':750000,
-                'cost':750000,
+                'base_cost':1000000,
+                'cost':1000000,
                 'unlock_rps':250,
                 'unlocked':false,
                 'sid':'s7',
-				'img':'http://i.imgur.com/hOhKz4u.png',
+		'img':'http://i.imgur.com/hOhKz4u.png',
             },
             '09_diplomat':{ 
                 'label':'Floating Bitcoin Island',
@@ -1872,12 +1672,12 @@ function Game() {
                 'amount':0,
                 'risk':0.1,
                 'rps':3000,
-                'base_cost':3500000,
-                'cost':3500000,
+                'base_cost':5000000,
+                'cost':5000000,
                 'unlock_rps':750,
                 'unlocked':false,
                 'sid':'s8',
-				'img':'http://upload.wikimedia.org/wikipedia/commons/6/67/AndrasGyorfi.jpg',
+		'img':'http://upload.wikimedia.org/wikipedia/commons/6/67/AndrasGyorfi.jpg',
             },
             '11_city_police':{
                 'label':'Interplanetary Exploration',
@@ -1887,12 +1687,12 @@ function Game() {
                 'amount':0,
                 'risk':0.1,
                 'rps':20000,
-                'base_cost':16825000,
-                'cost':16825000,
+                'base_cost':30000000,
+                'cost':30000000,
                 'unlock_rps':3900,
                 'unlocked':false,
                 'sid':'s9',
-				'img':'http://d1jqu7g1y74ds1.cloudfront.net/wp-content/uploads/2013/05/star_trek_space_station.jpg',
+		'img':'http://d1jqu7g1y74ds1.cloudfront.net/wp-content/uploads/2013/05/star_trek_space_station.jpg',
             },
              'senator':{
                 'label':'Solar-system-wide Bitcoin Exchanges',
@@ -1901,26 +1701,26 @@ function Game() {
                 'amount':0,
                 'risk':0.005,
                 'rps':100000,
-                'base_cost':81250000,
-                'cost':81250000,
+                'base_cost':200000000,
+                'cost':200000000,
                 'unlock_rps':24500,
                 'unlocked':false,
                 'sid':'s10',
-				'img':'http://i.space.com/images/i/000/009/474/i02/nasa-solar-system-graphic-72.jpg',
+		'img':'http://i.space.com/images/i/000/009/474/i02/nasa-solar-system-graphic-72.jpg',
             },       
             'big_cartel':{
                 'label':'Bitcoin Religion',
                 'description':'Some devotees of bitcoin have started a religion.  To join, prospective members must exchange '
-				    + '1 million dollars of fiat to bitcoin.',
+				    + 'their life savings to bitcoin.',
                 'amount':0,
                 'risk':0.00000001,
                 'rps':500000,
-                'base_cost':207500000,
-                'cost':207500000,
+                'base_cost':1000000000,
+                'cost':1000000000,
                 'unlock_rps':125000,
                 'unlocked':false,
                 'sid':'s11',
-				'img':'http://i.imgur.com/wNrNRAT.jpg',
+		'img':'http://i.imgur.com/wNrNRAT.jpg',
             },
             'dictator':{
                 'label':'Alpha Centauri Bitcoin Exchanges',
@@ -1929,12 +1729,12 @@ function Game() {
                 'amount':0,
                 'risk':0.00000001,
                 'rps':2000000,
-                'base_cost':935000000,
-                'cost':935000000,
+                'base_cost':5000000000,
+                'cost':5000000000,
                 'unlock_rps':650000,
                 'unlocked':false,
                 'sid':'s12',
-				'img':'http://www.robertphoenix.com/content/wp-content/uploads/2010/08/RedSun.jpg',
+		'img':'http://www.robertphoenix.com/content/wp-content/uploads/2010/08/RedSun.jpg',
             },
             'space_mules':{
                 'label':'Andromeda Galaxy Bitcoin Exchanges',
@@ -1943,12 +1743,12 @@ function Game() {
                 'amount':0,
                 'risk':0.000000001,
                 'rps':10000000,
-                'base_cost':4675000000,
-                'cost':4675000000,
+                'base_cost':30000000000,
+                'cost':30000000000,
                 'unlock_rps':2750000,
                 'unlocked':false,
                 'sid':'s13',
-				'img':'http://www.srl.caltech.edu/andromeda/m31.gif',
+		'img':'http://www.srl.caltech.edu/andromeda/m31.gif',
             },
             'meth_mart':{
                 'label':'Bitcoin becomes official currency of the Galactic American Empire',
@@ -1961,12 +1761,12 @@ function Game() {
                 'amount':0,
                 'risk':0.55,
                 'rps':75000000,
-                'base_cost':25000000000,
-                'cost':25000000000,
+                'base_cost':200000000000,
+                'cost':200000000000,
                 'unlock_rps':13000000,
                 'unlocked':false,
                 'sid':'s14',
-				'img':'http://i1146.photobucket.com/albums/o534/kingwilliam86/NationStates/Flags/USGalaxyFlag.gif'
+		'img':'http://i1146.photobucket.com/albums/o534/kingwilliam86/NationStates/Flags/USGalaxyFlag.gif'
             },
 
             'shuttle':{
@@ -1976,12 +1776,12 @@ function Game() {
                 'amount':0,
                 'risk':0.000001,
                 'rps':500000000,
-                'base_cost':117000000000,
-                'cost':117000000000,
+                'base_cost':1000000000000,
+                'cost':1000000000000,
                 'unlock_rps':90000000,
                 'unlocked':false,
                 'sid':'s15',
-				'img':'http://images.apple.com/support/assets/images/products/timemachine/hero_timemachine_lg.jpg',
+		'img':'http://images.apple.com/support/assets/images/products/timemachine/hero_timemachine_lg.jpg',
             },
             's_meth_relay':{
                 'label':'King of the Universe',
@@ -1989,12 +1789,12 @@ function Game() {
                 'amount':0,
                 'risk':0.000001,
                 'rps':5000000000,
-                'base_cost':500000000000,
-                'cost':500000000000,
+                'base_cost':5000000000000,
+                'cost':5000000000000,
                 'unlock_rps':600000000,
                 'unlocked':false,
                 'sid':'s16',
-				'img':'http://images4.wikia.nocookie.net/__cb20110320044208/revengeristsconsortium/images/5/53/Xenu2.jpg',
+		'img':'http://images4.wikia.nocookie.net/__cb20110320044208/revengeristsconsortium/images/5/53/Xenu2.jpg',
             },
             's_church':{
                 'label':'God',
@@ -2003,12 +1803,12 @@ function Game() {
                 'amount':0,
                 'risk':0.1,
                 'rps':50000000000,
-                'base_cost':2500000000000,
-                'cost':2500000000000,
+                'base_cost':30000000000000,
+                'cost':30000000000000,
                 'unlock_rps':7500000000,
                 'unlocked':false,
                 'sid':'s17',
-				'img':'http://www.fromquarkstoquasars.com/wp-content/uploads/2013/10/Quantum-Gravity.jpg',
+		'img':'http://www.fromquarkstoquasars.com/wp-content/uploads/2013/10/Quantum-Gravity.jpg',
             },
         }, 
 
@@ -2562,26 +2362,51 @@ function Game() {
                 'prereq':'methylamine_secret',           
                 'sid':'u50.1',               
             },
-//            'u_holy_meth':{
-//                'description':'Your followers feel closer to the heavens when they gaze upon '
-//                    + 'these holy crystals. Charge another $53 per batch',
-//                'cost':142100500555000,
-//                'action':'widget_roi',
-//                'mod':53,
-//                'purchased':false,
-//                'prereq':'alien_meth',           
-//                'sid':'u50.2',               
-//            },
-//            'u_angelic':{
-//                'label':'Angelic Meth',
-//                'description':'It is said that the Arch Angels of Methen prefer the taste of your meth',
-//                'cost':1042100500555000,
-//                'action':'widget_roi',
-//                'mod':60,
-//                'purchased':false,
-//                'prereq':'u_holy_meth',           
-//                'sid':'u50.3',               
-//            },
+            'u_holy_meth':{
+                'label':'$300 per bitcoin',
+                'description':'Bitcoin fever is infecting the world! '
+                    + 'The exchange rate increases by $200.',
+                'cost':142100500555000,
+                'action':'widget_roi',
+                'mod':200,
+                'purchased':false,
+                'prereq':'quantum_meth',           
+                'sid':'u50.2',               
+            },
+            'u_angelic':{
+                'label':'$500 per bitcoin',
+                'description':'Investors see the price increases from your '
+                    + 'market manipulation, and buy in large amounts.',
+                'cost':1042100500555000,
+                'action':'widget_roi',
+                'mod':200,
+                'purchased':false,
+                'prereq':'u_holy_meth',           
+                'sid':'u50.3',               
+            },
+            'u_venture_funding':{
+                'label':'$800 per bitcoin',
+                'description':'Venture capitalists start funding bitcoin '
+                    + 'companies, sending the exchange rate up $300.',
+                'cost':5042100500555000,
+                'action':'widget_roi',
+                'mod':300,
+                'purchased':false,
+                'prereq':'u_angelic',           
+                'sid':'u50.4',               
+            },
+            'u_all_time':{
+                'label':'$1242 per bitcoin',
+                'description':'Bitcoin reaches an all-time high on '
+                    + 'November 29, 2013.  Your assets played a large '
+                    + 'role in this price increase of $442.',
+                'cost':25042100500555000,
+                'action':'widget_roi',
+                'mod':442,
+                'purchased':false,
+                'prereq':'u_venture_funding',           
+                'sid':'u50.5',               
+            },
 //
 //            'u_nyme_1':{
 //                'label':'Insider Trading',
@@ -2816,6 +2641,18 @@ function Game() {
                 'group':227,
                 'min_time':1,           
                 'sid':'a15',
+            },
+            'satoshi_miner':{
+                'label':'Satoshi',
+                'description':'You\'ve found Satoshi!  Good detective work.',
+                'property':'clickers.c_planet.amount',
+                'required':1,
+                'unlocked':false,
+                'hidden':false,
+                'value':1,
+                'group':228,
+                'min_time':1,           
+                'sid':'a16',
             },
             'a_spacecorp':{
                 'label':'Secure your cash throughout the galaxy',
@@ -4448,7 +4285,7 @@ this.do_run = function() {
 
         if(pd.risk_amount > Math.random()) {
             if((nw - last_bust) < 240000) {
-                good_message('You narrowly avoided an major hardware failure.');
+                good_message('You narrowly avoided a major hardware failure.');
                 return false;
             }
             var picks = [];
@@ -4515,7 +4352,46 @@ function toggle_tab(tbid) {
     return false;
 }
 
-function pretty_bigint(num) { 
+function pretty_bigint_full(num) { 
+    var sn = '';
+    if(num >= 1000000000000000000000000) { 
+        return pretty_int(num)
+    }
+	if(num < 1) { 
+        sn = Math.round(num * 1000) / 1000;
+		return sn;
+		}    
+    if(num >= 1000000000000000000000) { 
+        sn = Math.round((num / 1000000000000000000000) * 100) / 100;
+        return sn + ' sextillion';
+    }
+    if(num >= 1000000000000000000) { 
+        sn = Math.round((num / 1000000000000000000) * 100) / 100;
+        return sn + ' quintillion';
+    }
+    if(num >= 1000000000000000) { 
+        sn = Math.round((num / 1000000000000000)*100) / 100;
+        return sn + ' quadrillion';
+    }
+    if(num >= 1000000000000) { 
+        sn = Math.round((num / 1000000000000) * 100) / 100;
+        return sn + ' trillion';
+    }
+    if(num >= 1000000000) { 
+        sn = Math.round((num / 1000000000) * 100) / 100;
+        return sn + ' billion';
+    }
+    if(num >= 1000000) { 
+        sn = Math.round((num / 1000000) * 100) / 100;
+        return sn + ' million';
+    } 
+    return pretty_int(num);
+}
+
+function pretty_bigint(num) {
+    if ($('#bigint_full').is(':checked')) {
+        return pretty_bigint_full(num);
+    }
     var sn = '';
     if(num >= 1000000000000000000000000) { 
         return pretty_int(num)
@@ -4718,7 +4594,7 @@ $(document).ready(function() {
 
     <div id="make_sell_pad"></div>
 
-    <div id="risk_div" class="small">
+    <div id="risk_div">
         You have a <b><span id="risk_level">low</span></b> chance of losing bitcoins or hardware failure
         (<b><span id="risk_amount">0</span>%</b>)<br />
         You have a <b><span id="risk2_level">low</span></b> chance of an IRS audit
@@ -4752,9 +4628,11 @@ $(document).ready(function() {
     <button onclick="switch_tab('misc');" id="misc_tab" class="tab">
         Options &amp; Stats
     </button>
+    <!--
     <button onclick="switch_tab('console');" id="console_tab" class="tab">
         Console
     </button>
+    -->
 </div>
 
 <div id="tab_divs">
@@ -4816,8 +4694,11 @@ $(document).ready(function() {
             <h3>Options</h3>
                 <button onclick="gm.do_reset_confirm();">Reset</button>
                 <button onclick="gm.do_reset_all_confirm();">Reset All</button>
+                <br>
                 <button onclick="gm.do_save();">Save</button>
                 <button onclick="gm.do_load();">Load</button>
+                <br><br>
+                <input type="checkbox" id="bigint_full"> <label for="bigint_full">Use full number names</label>
         </div>
         
         
@@ -4859,24 +4740,14 @@ $(document).ready(function() {
                     - Concept</li>
             </ul>
         </div>
-		<br>
-		<br>
-        <div class="pull_left space_left">
-                    <b>
-                        Donate</b>
-					<ul>
-                    <li><b>Devcoin:</b> 1SMEAGqpm9JSpJ6JZaM5dEBptPTNahpFa</li>
-					
-					<li><b>Bitcoin:</b> 1SMEAGqpm9JSpJ6JZaM5dEBptPTNahpFa</li>
-					<ul>
-		</div>
 <br>
 <br>
         <div class="clear"></div>
     </div>
 </div>
-    <div class="tab_div" id="console_div" style="display:none; width: 75%; float: right; margin-right:10px; padding: 15px;">
-        <div id="console" style="background-color: white; border-radius: 10px; padding: 15px;">
+<!-- No more console
+    <div class="tab_div" id="console_div">
+        <div id="console" class="w_div" style="background-color: white; border-radius: 10px; padding: 15px;">
 <h3 style="font-size: 36px;">Console</h3>
 <p>Type the command you wish to run (e.g. "add cash") and click the "Run" button.</p>
             <textarea id="console_input" style="width: 55%; font-family:monospace; padding: 2px; height: 60px; font-size: 24px; color: lime; background-color: black;"></textarea>
@@ -4889,10 +4760,7 @@ $(document).ready(function() {
 </div>    
 </div>
 </div>
-
-<div class="make_up"></div>
-<div class="sell_up"></div>
-
+-->
 
 <script id="tpl_achievement" type="text/template">
 <div id="{{id}}" class="s_div">
@@ -4976,47 +4844,24 @@ $(document).ready(function() {
 </div>
 </script>
 
-
-
-
-    <div class="clear"></div>
-<br>
-<br>
-<br>
-<div id="footer">
-    <div style = "color:black;">
-        <p style="color:black;">
-		    &copy;2014 smeagol, version <b><span id="version">0.2</span></b>
-            Forked from [<a href="https://github.com/webgovernor/clickingbad/" style="color:blue;">Clicking Bad, v0.8.3 by nullism.com</a>]
-            created on <b>Mon, Jun 23, 2014 @ 2:49 PM Eastern Standard Time</b> &mdash; beta version. 
-        </p>
-    </div>
-</div>
-<br>
-<div id="share_footer">
-    <!--// Twitter Follow //-->
-    <div class="pull_left" style="margin-left: 10px;">
-        <a href="https://bitcointalk.org/index.php?action=profile;u=111121" 
-            id="btctalk_btn" style = "border: 2px solid black;">Find smeagol on Bitcointalk</a>
-    </div>
-    <div class="pull_left" style="margin-left: 10px;" onclick="devcoin()">
-        <p id="btctalk_btn" style = "background-color:green;border:2px solid black; font-size: 17px;">Donate Devcoin (click here)</p>
-    </div>
-    <div class="pull_left" style="margin-left: 10px;" onclick="bitcoin()">
-        <p id="btctalk_btn" style = "background-color:orange;border:2px solid black;">Donate Bitcoin (click here)</p>
-    </div>
-    <div class="clear"></div>
-<script>
-function bitcoin()
-{
-alert("Bitcoin Donation Address: 1SMEAGqpm9JSpJ6JZaM5dEBptPTNahpFa - Thank you!");
+<style>
+#skyscraper {
+    position: absolute;
+    top: 120px;
+    right: 10px;
 }
-function devcoin()
-{
-alert("Devcoin Donation Address: 1SMEAGqpm9JSpJ6JZaM5dEBptPTNahpFa  - Thank you!");
+@media (max-width: 1320px) {
+  #skyscraper {
+    display: none;
+  }
 }
-</script>
-</div> <!--// End Share footer -->
+</style>
+
+<div class="clear"></div>
 <br>
+<br>
+<br>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- clicking bad uses jQuery 1.x, so we can't upgrade -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
